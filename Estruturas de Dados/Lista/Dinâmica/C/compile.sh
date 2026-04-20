@@ -1,0 +1,3 @@
+#!/bin/bash
+
+gcc -c list.c -o list.o && gcc main.c list.o -o main

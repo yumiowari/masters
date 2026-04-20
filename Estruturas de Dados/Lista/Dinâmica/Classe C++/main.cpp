@@ -1,3 +1,9 @@
+/*  
+ *  Implementação de Lista Encadeada Simples e Dinâmica em C++ utilizando classes.
+ * 
+ *  Rafael Renó Corrêa, 20 de abril de 2026.
+ */
+
 #include <iostream>
 
 #include "list.hpp"
@@ -9,16 +15,17 @@ int main(void){
     while(1){
         int op;
 
-        std::cout << "1 - Inserir elemento\n";
-        std::cout << "2 - Remover elemento\n";
-        std::cout << "3 - Imprimir lista\n";
-        std::cout << "0 - Sair\n";
+        std::cout << "1 - Inserir elemento" << std::endl;
+        std::cout << "2 - Remover elemento" << std::endl;
+        std::cout << "3 - Imprimir lista" << std::endl;
+        std::cout << "0 - Sair" << std::endl;
         std::cin >> op;
 
         switch(op){
             case 1:
                 // insert
                 std::cin >> value;
+
                 if(L->insert(value)){
                     std::cout << "Elemento inserido: " << value << std::endl;
                 }else{
@@ -30,6 +37,7 @@ int main(void){
             case 2:
                 // remove
                 std::cin >> value;
+
                 if(L->remove(value)){
                     std::cout << "Elemento removido: " << value << std::endl;
                 }else{
@@ -45,15 +53,15 @@ int main(void){
                 break;
 
             case 0:
-                // exit
-                std::cout << "Saindo...\n";
+                // destroy
+                std::cout << "Saindo..." << std::endl;
                 
                 delete L;
 
                 return 0;
 
             default:
-                std::cout << "Opção inválida\n";
+                std::cout << "Opção inválida." << std::endl;
 
                 break;
         }

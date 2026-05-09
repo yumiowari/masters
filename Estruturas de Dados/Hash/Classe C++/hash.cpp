@@ -3,14 +3,11 @@
  *
  *  Rafael Renó Corrêa, Gustavo Renó Corrêa
  *  
- *  27 de abril de 2026
+ *  9 de maio de 2026
  */
 
 #include "hash.hpp"
 
-// Complexidade:
-//     Melhor caso: O(1) - O valor é inserido no início da lista encadeada.
-//     Pior caso: O(n) - O valor é inserido no final da lista encadeada.
 bool Hash::insert_hash(int value){
     int key = this->hash_function(value, this->size);
 
@@ -45,17 +42,18 @@ bool Hash::insert_hash(int value){
     return true;
 }
 
-// Complexidade:
-//     Melhor caso: O(1) - O valor a ser removido está no início da lista encadeada.
-//     Pior caso: O(n) - O valor a ser removido está no final da lista encadeada ou não está presente.
 bool Hash::remove_hash(int value){
     int key = this->hash_function(value, this->size);
 
     Node* aux = this->table[key];
-    while(aux != nullptr && aux->get_value() != value)
-        aux = aux->get_next();
+    Node* prev = nullptr;
+    while(aux != nullptr && aux->get_value() < value){
+        prev = aux;
 
-    if(aux == nullptr)return false; // valor não encontrado
+        aux = aux->get_next();
+    }
+
+    if(aux == nullptr || aux->get_value() > value)return false; // valor não encontrado
 
     if(aux == this->table[key]){
         // 1º Caso: Remove o primeiro nó da lista
@@ -66,11 +64,6 @@ bool Hash::remove_hash(int value){
     }else{
         // 2º Caso: Remove um nó do meio ou do final da lista
 
-        Node* prev = this->table[key];
-        while(prev->get_next() != aux){
-            prev = prev->get_next();
-        }
-
         prev->set_next(aux->get_next());
 
         delete aux;
@@ -79,9 +72,6 @@ bool Hash::remove_hash(int value){
     return true;
 }
 
-// Complexidade:
-//     Melhor caso: O(1) - O valor está no início da lista encadeada.
-//     Pior caso: O(n) - O valor está no final da lista encadeada ou não está presente.
 bool Hash::search_hash(int value){
     int key = this->hash_function(value, this->size);
 

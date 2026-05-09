@@ -6,7 +6,7 @@
  *
  *  Rafael Renó Corrêa, Gustavo Renó Corrêa
  *  
- *  27 de abril de 2026
+ *  9 de maio de 2026
  */
 
 #include <iostream>
@@ -52,7 +52,7 @@ class Hash{
         }
 
         int hash_function(int value, int size){
-            return value % size;
+            return std::abs(value) % size;
         }
 
         bool insert_hash(int);

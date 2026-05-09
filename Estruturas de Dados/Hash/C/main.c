@@ -3,15 +3,17 @@
  *
  *  Rafael Renó Corrêa, Gustavo Renó Corrêa
  *  
- *  27 de abril de 2026
+ *  9 de maio de 2026
  */
 
 #include "hash.h"
 
+#define SIZE 10
+
 int main(void){
     int option, value;
 
-    hash_t* hash = init_hash(SIZE);
+    hash_t hash = init_hash(SIZE);
     if(hash == NULL)printf("Falha na alocação da tabela hash.\n");
 
     while(true){
@@ -24,14 +26,20 @@ int main(void){
                 printf("Valor: ");
                 scanf("%d", &value);
 
-                if(!insert_hash(hash, value))printf("Falha na inserção do valor %d.\n", value);
+                if(!insert_hash(hash, value))
+                    printf("Falha na inserção do valor %d.\n", value);
+                else
+                    printf("Valor %d inserido com sucesso.\n", value);
 
                 break;
             case 2:
                 printf("Valor: ");
                 scanf("%d", &value);
 
-                if(!remove_hash(hash, value))printf("Falha na remoção do valor %d.\n", value);
+                if(!remove_hash(hash, value))
+                    printf("Falha na remoção do valor %d.\n", value);
+                else
+                    printf("Valor %d removido com sucesso.\n", value);
 
                 break;
             case 3:
@@ -45,13 +53,19 @@ int main(void){
 
                 break;
             case 4:
-                show_hash(hash);
+                if(!show_hash(hash))
+                    printf("Falha ao imprimir a tabela hash.\n");
+                else
+                    printf("Tabela hash impressa com sucesso.\n");
 
                 break;
             case 0:
                 printf("Saindo...\n");
 
-                if(!destroy_hash(hash))printf("Falha na liberação da tabela hash.\n");
+                if(!destroy_hash(hash))
+                    printf("Falha na liberação da tabela hash.\n");
+                else
+                    printf("Tabela hash liberada com sucesso.\n");
 
                 return 0;
             default:

@@ -6,28 +6,26 @@
  *
  *  Rafael Renó Corrêa, Gustavo Renó Corrêa
  *  
- *  27 de abril de 2026
+ *  9 de maio de 2026
  */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
-#define SIZE 10
+typedef struct node* node_t;
+typedef struct hash* hash_t;
 
-typedef struct node node_t;
-typedef struct hash hash_t;
+hash_t init_hash(int);
 
-hash_t* init_hash(int);
+bool insert_hash(hash_t, int);
 
-bool insert_hash(hash_t*, int);
+bool remove_hash(hash_t, int);
 
-bool remove_hash(hash_t*, int);
+bool search_hash(hash_t, int);
 
-bool search_hash(hash_t*, int);
+bool destroy_hash(hash_t);
 
-bool destroy_hash(hash_t*);
-
-void show_hash(hash_t*);
+bool show_hash(hash_t);
 
 #endif // HASH_H

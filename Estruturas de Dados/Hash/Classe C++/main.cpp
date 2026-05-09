@@ -3,7 +3,7 @@
  *
  *  Rafael Renó Corrêa, Gustavo Renó Corrêa
  *  
- *  27 de abril de 2026
+ *  9 de maio de 2026
  */
 
 #include "hash.hpp"
@@ -24,14 +24,20 @@ int main(void){
                 std::cout << "Valor: ";
                 std::cin >> value;
 
-                if(!hash->insert_hash(value))std::cout << "Falha na inserção do valor " << value << ".\n" << std::endl;
+                if(!hash->insert_hash(value))
+                    std::cout << "Falha na inserção do valor " << value << ".\n" << std::endl;
+                else
+                    std::cout << "Valor " << value << " inserido com sucesso.\n" << std::endl;
 
                 break;
             case 2:
                 std::cout << "Valor: ";
                 std::cin >> value;
 
-                if(!hash->remove_hash(value))std::cout << "Falha na remoção do valor " << value << ".\n" << std::endl;
+                if(!hash->remove_hash(value))
+                    std::cout << "Falha na remoção do valor " << value << ".\n" << std::endl;
+                else
+                    std::cout << "Valor " << value << " removido com sucesso.\n" << std::endl;
 
                 break;
             case 3:

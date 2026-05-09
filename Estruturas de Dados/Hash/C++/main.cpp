@@ -3,15 +3,17 @@
  *
  *  Rafael Renó Corrêa, Gustavo Renó Corrêa
  *  
- *  27 de abril de 2026
+ *  9 de maio de 2026
  */
 
 #include "hash.hpp"
 
+#define SIZE 10
+
 int main(void){
     int option, value;
 
-    hash_t* hash = init_hash(SIZE);
+    hash_t hash = init_hash(SIZE);
     if(hash == nullptr)std::cout << "Falha na alocação da tabela hash." << std::endl;
 
     while(true){
@@ -24,14 +26,20 @@ int main(void){
                 std::cout << "Valor: ";
                 std::cin >> value;
 
-                if(!insert_hash(hash, value))std::cout << "Falha na inserção do valor " << value << ".\n" << std::endl;
+                if(!insert_hash(hash, value))
+                    std::cout << "Falha na inserção do valor " << value << ".\n" << std::endl;
+                else
+                    std::cout << "Valor " << value << " inserido com sucesso.\n" << std::endl;
 
                 break;
             case 2:
                 std::cout << "Valor: ";
                 std::cin >> value;
 
-                if(!remove_hash(hash, value))std::cout << "Falha na remoção do valor " << value << ".\n" << std::endl;
+                if(!remove_hash(hash, value))
+                    std::cout << "Falha na remoção do valor " << value << ".\n" << std::endl;
+                else
+                    std::cout << "Valor " << value << " removido com sucesso.\n" << std::endl;
 
                 break;
             case 3:
@@ -45,13 +53,19 @@ int main(void){
 
                 break;
             case 4:
-                show_hash(hash);
+                if(!show_hash(hash))
+                    std::cout << "Falha na exibição da tabela hash.\n" << std::endl;
+                else
+                    std::cout << "Tabela hash exibida com sucesso.\n" << std::endl;
 
                 break;
             case 0:
                 std::cout << "Saindo...\n";
 
-                if(!destroy_hash(hash))std::cout << "Falha na liberação da tabela hash.\n" << std::endl;
+                if(!destroy_hash(hash))
+                    std::cout << "Falha na liberação da tabela hash.\n" << std::endl;
+                else
+                    std::cout << "Tabela hash liberada com sucesso.\n" << std::endl;
 
                 return 0;
             default:

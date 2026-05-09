@@ -19,7 +19,7 @@
 
 ### Dicionário de Dados e Tabelas _Hash_
 
-Assim como listas, filas e pilhas, tabelas _hash_ presentam um conjunto dinâmico de dados.
+Assim como listas, filas e pilhas, tabelas _hash_ representam um conjunto dinâmico de dados.
 
 Suportam operações de inserção, remoção e busca. Com complexidade temporal média _O(1)_ para busca.
 
@@ -102,7 +102,7 @@ _h(k) = k mod 10_
 
 _h(50) = 10 mod 10 = 0_
 
-Como o universo de chaves é limitado, é possível que a função de _hashing_ mapeie dois valores para a mesma chave, resultando em colisão.
+Como o universo de chaves é limitado, é possível que a função de _hashing_ mapeie dois valores para a mesma chave, resultando em uma colisão.
 
 Para resolver as colisões, é feito encadeamento dos valores na mesma chave.
 

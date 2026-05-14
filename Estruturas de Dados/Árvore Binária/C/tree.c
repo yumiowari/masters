@@ -36,7 +36,7 @@ node_t create_node(int data){
 }
 
 bool is_empty(tree_t tree){
-    return tree->root == NULL;
+    return tree->qty == 0;
 }
 
 bool insert_node(tree_t tree, int data){
@@ -44,7 +44,9 @@ bool insert_node(tree_t tree, int data){
 
     if(is_empty(tree)){
         tree->root = create_node(data);
+        if(tree->root == NULL)return false; // Falha ao alocar memória para o nó raiz
         
+        tree->qty++;
         return true;
     }else{
         node_t next = tree->root;
@@ -65,12 +67,13 @@ bool insert_node(tree_t tree, int data){
 
         if(data < prev->data)
             prev->left = create_node(data);
+            if(prev->left == NULL)return false; // Falha ao alocar memória para o novo nó
         else
             prev->right = create_node(data);
+            if(prev->right == NULL)return false;
     }
 
     tree->qty++;
-
     return true;
 }
 

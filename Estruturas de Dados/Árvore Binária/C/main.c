@@ -26,7 +26,7 @@ int main(void){
                 if(insert_node(tree, data))
                     printf("Nó inserido com sucesso!\n");
                 else
-                    printf("Falha ao inserir nó. O nó já existe ou a árvore é inválida.\n");
+                    printf("Falha ao inserir nó. O nó já existe, a árvore é inválida ou não foi possível alocar memória.\n");
 
                 break;
 
